@@ -20,6 +20,6 @@ class Person
   end
 end
 
-#Tests
+# Tests
 # Bb = Person.new('Big Mike', 45)
 # puts Bb.name, Bb.id, Bb.age

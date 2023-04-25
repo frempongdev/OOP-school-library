@@ -1,8 +1,8 @@
 require './person'
 
 class Student < Person
-  def initialize(classroom)
-    super('Big Mike', 45)
+  def initialize(name, classroom, age)
+    super(name, age)
     @classroom = classroom
   end
 
@@ -11,7 +11,7 @@ class Student < Person
   end
 end
 
-#Tests
-# Bb = Student.new('science')
-# puts Bb.name, Bb.id, Bb.age
-# puts Bb.play_hooky
+# Tests
+# Bb = Student.new(17, 'science', 'Obour')
+# puts "Name: #{Bb.name}, ID: #{Bb.id}, Age: #{Bb.age}"
+# puts "Plays #{Bb.play_hooky}"
