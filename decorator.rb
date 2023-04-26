@@ -9,3 +9,9 @@ class Decorator < Nameable
     @nameable.correct_name
   end
 end
+
+class CapitalizeDecorator < Decorator
+  def correct_name
+    super.capitalize
+  end
+end
