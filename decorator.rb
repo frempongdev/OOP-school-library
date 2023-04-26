@@ -1,8 +1,9 @@
-require './nameable.rb'
+require './nameable'
 
 class Decorator < Nameable
   def initialize(nameable)
-    @nameable = Nameable.new()
+    super()
+    @nameable = nameable
   end
 
   def correct_name
@@ -18,6 +19,6 @@ end
 
 class TrimmerDecorator < Decorator
   def correct_name
-    super.slice(0,10)
+    super.slice(0, 10)
   end
 end
