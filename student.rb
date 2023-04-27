@@ -1,17 +1,14 @@
 require './person'
 
 class Student < Person
-  def initialize(name, classroom, age)
-    super(name, age)
-    @classroom = classroom
-  end
+  attr_accessor :classroom
 
   def play_hooky
     '¯(ツ)/¯'
   end
-end
 
-# Tests
-# Bb = Student.new(17, 'science', 'Obour')
-# puts "Name: #{Bb.name}, ID: #{Bb.id}, Age: #{Bb.age}"
-# puts "Plays #{Bb.play_hooky}"
+  def classrooms=(classroom)
+    @classroom = classroom
+    classroom.students.push(self) unless classroom.students.include?(self)
+  end
+end
