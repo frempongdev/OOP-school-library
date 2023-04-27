@@ -35,9 +35,6 @@ class Person < Nameable
 end
 
 # Tests
-# Bb = Person.new('Big Mike', 45)
-# puts Bb.name, Bb.id, Bb.age
-
 # person = Person.new(22, 'maximilianus')
 # puts person.correct_name
 # capitalizedPerson = CapitalizeDecorator.new(person)

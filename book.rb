@@ -3,7 +3,7 @@ require './person'
 
 class Book
   attr_accessor :rentals, :title, :author
-  
+
   def initialize(title, author)
     @title = title
     @author = author
@@ -13,10 +13,9 @@ class Book
   def add_rental(rental)
     rentals.push(rental)
   end
-
 end
 
-#Tests
+# Tests
 # person = Person.new(22, 'maximilianus')
 # b1 = Book.new('Think and Grow Rich', 'Napoleon Hill')
 # b2 = Book.new('Atomic Habits', 'James Clear')
