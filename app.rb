@@ -46,6 +46,8 @@ class App
             create_book()
           when '5'
             create_rental()
+          when '6'
+            list_rental_by_id()
           end
     end
 
@@ -65,19 +67,16 @@ class App
     def list_all_people
         students = Student.all
         teachers = Teacher.all
-        p_index = 1
 
         if students.empty? && teachers.empty?
             puts 'There are no people added yet.'
         else
             puts 'These are all the people:'
             students.each do |student|
-                puts "#{p_index}. #{student.name} is a Student aged #{student.age}"
-                p_index+=1
+                puts "#{student.name} is a Student aged #{student.age} with ID: #{student.id}"
             end
             teachers.each do |teacher|
-                puts "#{p_index}. #{teacher.name} is a Teacher aged #{teacher.age} and specializes in #{teacher.specialization}"
-                p_index+=1
+                puts "#{teacher.name} is a Teacher aged #{teacher.age} with ID: #{teacher.id} and specializes in #{teacher.specialization}"
             end
         end
         puts #blank
@@ -93,7 +92,7 @@ class App
             s_name = gets.chomp
             print 'Age: '
             s_age = gets.chomp.to_i
-            Student.new(s_age, s_name).make_student
+            Student.new(s_age, s_name, parent_permission).make_student
             puts 'Student created successfully!'
         when '2'
             puts 'Please add details of Teacher...'
@@ -129,7 +128,7 @@ class App
         else
             puts 'Please choose the Person for the Rental (input number)'
             persons.each_with_index do |person, index|
-                puts "#{index + 1}. #{person.name}, #{person.class} aged #{person.age} with ID:#{person.id}"
+                puts "[#{index + 1}] #{person.name}, #{person.class} aged #{person.age} with ID:#{person.id}"
             end
             @r_person = persons[gets.chomp.to_i - 1]   
         end
@@ -139,7 +138,7 @@ class App
         else
             puts 'Please choose the Book for the Rental (input number)'
             books.each_with_index do |book, index|
-                puts "#{index + 1}. \"#{book.title}\" by #{book.author}"
+                puts "[#{index + 1}] \"#{book.title}\" by #{book.author}"
             end
             @r_book = books[gets.chomp.to_i - 1]   
         end
@@ -151,12 +150,27 @@ class App
     
             Rental.new(r_date, @r_book, @r_person)
             puts 'Rental created successfully!'
-            p Rental.all
-        end
-
-
-        
+        end        
     end
+
+    def list_rental_by_id
+        rentals = Rental.all
+        puts 'Please provide Person ID for Rental list...'
+        p_id = gets.chomp.to_i
+        rental_found = false
+        rentals.each do |rental|
+        if rental.person.id == p_id
+            puts "#{rental.person.name}\'s Rentals:"
+            puts "Date: #{rental.date} Book: \"#{rental.book.title}\" by #{rental.book.author}"
+            rental_found = true
+        end
+        end
+        unless rental_found
+            puts "No Rental for Person with ID: #{p_id}"
+        end
+        puts #blank
+    end
+
 
 
 
