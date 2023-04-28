@@ -1,17 +1,45 @@
+require './book'
+
 class App
     def start
         puts 'Welcome to your School Library App!'
         puts #blank space
-        sleep(1.5)
-        menu()
+        @menu_choice = ''
+        until @menu_choice.upcase == 'X'
+            menu()
+        end
+             
     end
 
     def menu
-        puts 'Please choose an option by entering a number'
+        sleep(1.5)
+        puts 'Please choose an option by entering a number or [X] to exit'
         puts '[1] List all Books', '[2] List all People', '[3] Create a Person', '[4] Create a Book', '[5] Create Rental', '[6] List all Rentals by a given ID', '[X] Exit'
-        puts #blank space
+        puts #blank
         print 'Type number here: '
         @menu_choice = gets.chomp
-        puts @menu_choice
+        if @menu_choice.upcase == 'X'
+            puts 'Goodbye!'
+        elsif @menu_choice.to_i != 0 && @menu_choice.to_i.between?(1,6) 
+            puts "Option #{@menu_choice} chosen..."
+            sleep(1.5)
+            enter_menu()
+        else   
+            puts 'Please choose a valid option!'
+            puts #blank
+        end
     end
+    
+    def enter_menu
+        case @menu_choice
+          when '1'
+            list_all_books()
+            puts #blank
+          end
+    end
+
+    def list_all_books
+        puts 'All books'
+    end
+
 end
