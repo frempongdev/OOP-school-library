@@ -4,7 +4,7 @@ class Student < Person
   attr_accessor :classroom
   @@students = []
 
-  def make_students
+  def make_student
     @@students << self 
   end
 

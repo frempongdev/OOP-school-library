@@ -39,7 +39,8 @@ class App
             list_all_books()
           when '2'
             list_all_people()
-          end
+          when '3'
+            create_person()
     end
 
     def list_all_books
@@ -67,10 +68,35 @@ class App
                 puts "#{student.name} is a Student aged #{student.age}"
             end
             teachers.each do |teacher|
-                puts "#{teacher.name} is a Teacher aged #{teacher.age}"
+                puts "#{teacher.name} is a Teacher aged #{teacher.age} and specializes in #{teacher.specialization}"
             end
         end
         puts #blank
+    end
+
+    def create_person
+        puts 'Do you want to create a Student [1] or a Teacher [2] ? (input number)'
+        input = gets.chomp
+        case input
+        when '1'
+            puts 'Please add details of Student...'
+            print 'Name: '
+            s_name = gets.chomp
+            print 'Age: '
+            s_age = gets.chomp.to_i
+            Student.new(s_age, s_name).make_student
+            puts 'Student created successfully!'
+        when '2'
+            puts 'Please add details of Teacher...'
+            print 'Name: '
+            t_name = gets.chomp
+            print 'Age: '
+            t_age = gets.chomp.to_i
+            print 'Specialization: '
+            t_spec = gets.chomp
+            Teacher.new(t_spec, t_age, t_name)
+            puts 'Teacher created successfully!'
+        end
     end
 
 end

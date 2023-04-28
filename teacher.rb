@@ -1,6 +1,7 @@
 require './person'
 
 class Teacher < Person
+  attr_reader :specialization
   @@teachers = []
 
   def initialize(specialization, age, name)
