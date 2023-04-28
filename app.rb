@@ -41,6 +41,9 @@ class App
             list_all_people()
           when '3'
             create_person()
+          when '4'
+            create_book()
+          end
     end
 
     def list_all_books
@@ -97,6 +100,16 @@ class App
             Teacher.new(t_spec, t_age, t_name)
             puts 'Teacher created successfully!'
         end
+    end
+
+    def create_book
+        puts 'Add Book details below...'
+        print 'Title: '
+        b_title = gets.chomp
+        print 'Author: '
+        b_author = gets.chomp
+        Book.new(b_title, b_author)
+        puts 'Book added successfully!'
     end
 
 end
