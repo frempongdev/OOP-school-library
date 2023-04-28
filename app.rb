@@ -24,7 +24,7 @@ class App
         if @menu_choice.upcase == 'X'
             puts 'Goodbye!'
         elsif @menu_choice.to_i != 0 && @menu_choice.to_i.between?(1,6) 
-            puts "Option #{@menu_choice} chosen..."
+            puts "OPTION CHOSEN [#{@menu_choice}]"
             puts #blank
             sleep(1.5)
             enter_menu()
@@ -73,7 +73,7 @@ class App
         else
             puts 'These are all the people:'
             students.each do |student|
-                puts "#{student.name} is a Student aged #{student.age} with ID: #{student.id}"
+                puts "#{student.name} is a Student aged #{student.age} with ID: #{student.id}. Has parent permission ? #{student.parent_permission}"
             end
             teachers.each do |teacher|
                 puts "#{teacher.name} is a Teacher aged #{teacher.age} with ID: #{teacher.id} and specializes in #{teacher.specialization}"
@@ -92,7 +92,14 @@ class App
             s_name = gets.chomp
             print 'Age: '
             s_age = gets.chomp.to_i
-            Student.new(s_age, s_name, parent_permission).make_student
+            print 'Has parent permission (Y/N): '
+            perm_response = gets.chomp.upcase
+            if perm_response == 'Y'
+                s_perm = true
+            elsif perm_response == 'N'
+                s_perm = false
+            end
+            Student.new(s_age, s_name, s_perm).make_student
             puts 'Student created successfully!'
         when '2'
             puts 'Please add details of Teacher...'
