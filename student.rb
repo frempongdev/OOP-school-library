@@ -2,6 +2,15 @@ require './person'
 
 class Student < Person
   attr_accessor :classroom
+  @@students = []
+
+  def make_students
+    @@students << self 
+  end
+
+  def self.all 
+    @@students
+  end
 
   def play_hooky
     '¯(ツ)/¯'

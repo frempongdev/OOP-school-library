@@ -1,13 +1,20 @@
 require './person'
 
 class Teacher < Person
-  def initialize(specialization, age)
-    super(age)
+  @@teachers = []
+
+  def initialize(specialization, age, name)
+    super(age, name)
     @specialization = specialization
+    @@teachers << self
   end
 
   def can_use_service?
     true
+  end
+
+  def self.all
+    @@teachers
   end
 end
 

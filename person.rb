@@ -6,6 +6,8 @@ class Person < Nameable
   attr_accessor :name, :age, :rentals
   attr_reader :id
 
+  @@persons = []
+
   def initialize(age, name = 'Unknown', parent_permission: true)
     super()
     @id = Random.rand(1...1000)
@@ -13,6 +15,7 @@ class Person < Nameable
     @age = age
     @parent_permission = parent_permission
     @rentals = []
+    @@persons << self
   end
 
   def can_use_service?
@@ -25,6 +28,9 @@ class Person < Nameable
 
   def add_rental(book, date)
     Rental.new(date, book, self)
+  end
+
+  def self.all
   end
 
   private
