@@ -1,6 +1,7 @@
 require './book'
 require './student'
 require './teacher'
+require './rental'
 
 class App
     def start
@@ -43,6 +44,8 @@ class App
             create_person()
           when '4'
             create_book()
+          when '5'
+            create_rental()
           end
     end
 
@@ -53,7 +56,7 @@ class App
         else
             puts 'These are all the books:'
             books.each do |book|
-                puts "#{book.title} by #{book.author}"
+                puts "\"#{book.title}\" by #{book.author}"
             end
         end
         puts #blank
@@ -62,16 +65,19 @@ class App
     def list_all_people
         students = Student.all
         teachers = Teacher.all
+        p_index = 1
 
         if students.empty? && teachers.empty?
             puts 'There are no people added yet.'
         else
             puts 'These are all the people:'
             students.each do |student|
-                puts "#{student.name} is a Student aged #{student.age}"
+                puts "#{p_index}. #{student.name} is a Student aged #{student.age}"
+                p_index+=1
             end
             teachers.each do |teacher|
-                puts "#{teacher.name} is a Teacher aged #{teacher.age} and specializes in #{teacher.specialization}"
+                puts "#{p_index}. #{teacher.name} is a Teacher aged #{teacher.age} and specializes in #{teacher.specialization}"
+                p_index+=1
             end
         end
         puts #blank
@@ -111,5 +117,47 @@ class App
         Book.new(b_title, b_author)
         puts 'Book added successfully!'
     end
+
+    def create_rental
+        students = Student.all
+        teachers = Teacher.all
+        persons = students + teachers
+        books = Book.all
+        
+        if persons.empty?
+            puts 'There are no People added yet.'
+        else
+            puts 'Please choose the Person for the Rental (input number)'
+            persons.each_with_index do |person, index|
+                puts "#{index + 1}. #{person.name}, #{person.class} aged #{person.age} with ID:#{person.id}"
+            end
+            @r_person = persons[gets.chomp.to_i - 1]   
+        end
+
+        if books.empty?
+            puts 'There are no Books added yet.'
+        else
+            puts 'Please choose the Book for the Rental (input number)'
+            books.each_with_index do |book, index|
+                puts "#{index + 1}. \"#{book.title}\" by #{book.author}"
+            end
+            @r_book = books[gets.chomp.to_i - 1]   
+        end
+
+        if books.empty? && persons.empty?
+        else
+            print 'Please input Date of Rental (YYYY/MM/DD): '
+            r_date = gets.chomp
+    
+            Rental.new(r_date, @r_book, @r_person)
+            puts 'Rental created successfully!'
+            p Rental.all
+        end
+
+
+        
+    end
+
+
 
 end
