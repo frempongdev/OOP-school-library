@@ -39,7 +39,18 @@ class App
     end
 
     def list_all_books
-        puts 'All books'
+        books = Book.all
+        if books.empty?
+            puts 'There are no books added yet.'
+            puts #blank
+        else
+            puts 'These are all the books:'
+            p books
+            books.each do |book|
+                puts "#{book.title} by #{book.author}"
+            end
+            puts #blank
+        end
     end
 
 end
