@@ -2,12 +2,13 @@ require './person'
 
 class Teacher < Person
   attr_reader :specialization
-  @@teachers = []
+
+  @teachers = []
 
   def initialize(specialization, age, name)
     super(age, name)
     @specialization = specialization
-    @@teachers << self
+    self.class.all << self
   end
 
   def can_use_service?
@@ -15,10 +16,6 @@ class Teacher < Person
   end
 
   def self.all
-    @@teachers
+    @teachers
   end
 end
-
-# Test
-# Bb = Teacher.new('Math', 40)
-# puts "Name: #{Bb.name}, ID: #{Bb.id}, Age: #{Bb.age}, Using Service: #{Bb.can_use_service?}"

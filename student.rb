@@ -2,18 +2,19 @@ require './person'
 
 class Student < Person
   attr_accessor :classroom, :parent_permission
-  @@students = []
 
-  def initialize(age, name = 'Unknown', parent_permission)
+  @students = []
+
+  def initialize(age, parent_permission, name = 'Unknown')
     super(age, name, parent_permission: parent_permission)
   end
 
   def make_student
-    @@students << self 
+    self.class.all << self
   end
 
-  def self.all 
-    @@students
+  def self.all
+    @students
   end
 
   def play_hooky

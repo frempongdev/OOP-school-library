@@ -3,13 +3,14 @@ require './person'
 
 class Book
   attr_accessor :rentals, :title, :author
-  @@books = []
+
+  @books = []
 
   def initialize(title, author)
     @title = title
     @author = author
     @rentals = []
-    @@books << self
+    self.class.all << self
   end
 
   def add_rental(person, date)
@@ -17,6 +18,6 @@ class Book
   end
 
   def self.all
-    @@books
+    @books
   end
 end
