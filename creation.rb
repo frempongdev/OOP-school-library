@@ -1,6 +1,7 @@
 require './student'
 require './teacher'
 require './book'
+require './rental'
 
 class Creation
     def create_person
