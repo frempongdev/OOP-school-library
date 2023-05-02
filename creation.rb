@@ -2,6 +2,7 @@ require './student'
 require './teacher'
 require './book'
 require './rental'
+require './choose'
 
 class Creation
   def create_person
@@ -48,6 +49,7 @@ class Creation
   end
 
   def create_rental
+    choose = Choose.new
     students = Student.all
     teachers = Teacher.all
     persons = students + teachers
@@ -55,12 +57,12 @@ class Creation
     if persons.empty?
       puts 'There are no People added yet.'
     else
-      @r_person = choose_person(persons)
+      @r_person = choose.choose_person(persons)
     end
     if books.empty?
       puts 'There are no Books added yet.'
     else
-      @r_book = choose_book(books)
+      @r_book = choose.choose_book(books)
     end
     return if books.empty? && persons.empty?
 
