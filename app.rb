@@ -59,27 +59,4 @@ class App
     end
     books[gets.chomp.to_i - 1]
   end
-
-  def create_rental
-    students = Student.all
-    teachers = Teacher.all
-    persons = students + teachers
-    books = Book.all
-    if persons.empty?
-      puts 'There are no People added yet.'
-    else
-      @r_person = choose_person(persons)
-    end
-    if books.empty?
-      puts 'There are no Books added yet.'
-    else
-      @r_book = choose_book(books)
-    end
-    return if books.empty? && persons.empty?
-
-    print 'Please input Date of Rental (YYYY/MM/DD): '
-    r_date = gets.chomp
-    Rental.new(r_date, @r_book, @r_person)
-    puts 'Rental created successfully!'
-  end
 end
