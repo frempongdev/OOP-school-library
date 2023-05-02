@@ -4,7 +4,7 @@ require './book'
 require './rental'
 
 class Creation
-    def create_person
+  def create_person
     puts 'Do you want to create a Student [1] or a Teacher [2]? (input number)'
     input = gets.chomp
 

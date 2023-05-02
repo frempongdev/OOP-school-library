@@ -2,8 +2,10 @@ require './creation'
 require './listings'
 
 class App
-  @@creation = Creation.new
-  @@listings = Listings.new
+  def initialize
+    @creation = Creation.new
+    @listings = Listings.new
+  end
 
   def start
     puts 'Welcome to your School Library App!'
@@ -33,12 +35,12 @@ class App
 
   def enter_menu
     case @menu_choice
-    when '1' then @@listings.list_all_books
-    when '2' then @@listings.list_all_people
-    when '3' then @@creation.create_person
-    when '4' then @@creation.create_book
-    when '5' then @@creation.create_rental
-    when '6' then @@listings.list_rental_by_id
+    when '1' then @listings.list_all_books
+    when '2' then @listings.list_all_people
+    when '3' then @creation.create_person
+    when '4' then @creation.create_book
+    when '5' then @creation.create_rental
+    when '6' then @listings.list_rental_by_id
     end
   end
 
