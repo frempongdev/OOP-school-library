@@ -44,24 +44,6 @@ class App
     end
   end
 
-  def list_all_people
-    students = Student.all
-    teachers = Teacher.all
-
-    if students.empty? && teachers.empty?
-      puts 'There are no people added yet.'
-    else
-      puts 'These are all the people:'
-      students.each do |student|
-        puts "#{student.name}, Student aged #{student.age} with ID: #{student.id}."
-      end
-      teachers.each do |teacher|
-        puts "#{teacher.name}, #{teacher.specialization} Teacher aged #{teacher.age} with ID: #{teacher.id}."
-      end
-    end
-    puts # blank
-  end
-
   def choose_person(persons)
     puts 'Please choose the Person for the Rental (input number)'
     persons.each_with_index do |person, index|
