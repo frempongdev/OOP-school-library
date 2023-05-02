@@ -173,6 +173,11 @@ Example:
 - Twitter: [@knobaddy](https://twitter.com/knobaddy)
 - LinkedIn: [Samuel knower Amankwaa-Frempong](https://www.linkedin.com/in/frempongdev/)
 
+👤 **Jonas Nuta Wallah**
+
+- GitHub: [@Jonas-45](https://github.com/jonas-45)
+- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
