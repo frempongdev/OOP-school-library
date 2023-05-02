@@ -82,21 +82,4 @@ class App
     Rental.new(r_date, @r_book, @r_person)
     puts 'Rental created successfully!'
   end
-
-  def list_rental_by_id
-    rentals = Rental.all
-    puts 'Please provide Person ID for Rental list...'
-    p_id = gets.chomp.to_i
-    rental_found = false
-    puts # blank
-    puts "All Rentals by User ID:#{p_id}"
-    rentals.each do |rental|
-      next unless rental.person.id == p_id
-
-      puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
-      rental_found = true
-    end
-    puts "No Rental for Person with ID: #{p_id}" unless rental_found
-    puts # blank
-  end
 end
