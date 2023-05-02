@@ -1,3 +1,8 @@
+require './book'
+require './student'
+require './teacher'
+require './rental'
+
 class Listings
   def list_all_books
     books = Book.all
