@@ -1,5 +1,7 @@
 require './creation'
 require './listings'
+require './saves'
+require 'json'
 
 class App
   def initialize
@@ -7,7 +9,35 @@ class App
     @listings = Listings.new
   end
 
+  def loading
+    if File.zero?('books.json')
+    else
+      book_reads = JSON.load(File.read('books.json')).map do |book_data|
+      Book.new(book_data['title'], book_data['author'])
+      end
+    end
+    if File.zero?('student.json')
+    else
+        student_reads = JSON.load(File.read('student.json')).map do |student_data|
+        Student.new(student_data['age'], student_data['parent_permission'], student_data['name'])
+        end
+    end
+    if File.zero?('teacher.json')
+    else
+      teacher_reads = JSON.load(File.read('teacher.json')).map do |teacher_data|
+      Teacher.new(teacher_data['specialization'], teacher_data['age'], teacher_data['name'])
+      end
+    end
+    if File.zero?('rentals.json')
+    else
+    rental_reads = JSON.load(File.read('rentals.json')).map do |rental_data|
+      Rental.new(rental_data['date'], rental_data['book'], rental_data['person'])
+      end  
+    end
+  end
+
   def start
+    loading
     puts 'Welcome to your School Library App!'
     puts # blank
     @menu_choice = ''
@@ -23,6 +53,11 @@ class App
     print 'OPTION CHOSEN: '
     @menu_choice = gets.chomp
     if @menu_choice.upcase == 'X'
+     saves = Saves.new
+     saves.book_saves
+     saves.student_saves
+     saves.teacher_saves
+     saves.rental_saves
       puts 'Goodbye!'
     elsif @menu_choice.to_i != 0 && @menu_choice.to_i.between?(1, 6)
       sleep(1)
