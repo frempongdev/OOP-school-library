@@ -79,6 +79,8 @@ After you're finished please remove all the comments and instructions!
 - **[This project has a  Student class that inherits from Person class]**
 - **[This project has a  Teacher class that inherits from Person class]**
 - **[This project uses Gitflow]**
+ **[Refactor code to follow SOLID principles]**
+- **[Preserve data in json files]**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
