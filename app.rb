@@ -31,7 +31,7 @@ class App
     if File.zero?('rentals.json')
     else
     rental_reads = JSON.load(File.read('rentals.json')).map do |rental_data|
-      Rental.new(rental_data['date'], rental_data['book'], rental_data['person'])
+      Rental.new(rental_data['date'], JSON.load(rental_data['book']), JSON.load(rental_data['person']))
       end  
     end
   end
