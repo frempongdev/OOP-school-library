@@ -27,10 +27,8 @@ class Saves
     
     def rental_saves
         rentals = Rental.all
-
-
         File.open('rentals.json', 'w') do |file|    
-            file.write(JSON.generate(rentals.map { |rental| { date: rental.date, book: JSON.generate(rental.book), person: JSON.generate(rental.person) } }))
+          file.write(JSON.dump(rentals.map { |rental| { date: rental.date, book: {title:rental.book.title, author: rental.book.author}, person: {id: rental.person.id, age: rental.person.age, name: rental.person.name} } }))
         end
     end
 end

@@ -68,9 +68,7 @@ class Creation
 
     print 'Please input Date of Rental (YYYY/MM/DD): '
     r_date = gets.chomp
-     rr = Rental.new(r_date, @r_book, @r_person)
-     p rr
-     p Rental.all
+    Rental.new(r_date, @r_book, @r_person)
     puts 'Rental created successfully!'
   end
 end

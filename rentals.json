@@ -1,1 +1,26 @@
-[{"date":"2025","book":{"title":"Journal","author":"Mutta"},"person":{"id":347,"age":44,"name":"James"}}]
+[
+    {
+        "date": "2020",
+        "book": {
+            "title": "Journal",
+            "author": "Mutta"
+        },
+        "person": {
+            "id": 227,
+            "age": 44,
+            "name": "James"
+        }
+    },
+    {
+        "date": "2030",
+        "book": {
+            "title": "Who Knows",
+            "author": "James Gunner"
+        },
+        "person": {
+            "id": 29,
+            "age": 17,
+            "name": "Max"
+        }
+    }
+]
