@@ -2,7 +2,7 @@ require './rental'
 require './person'
 
 class Book
-  attr_accessor :rentals, :title, :author
+  attr_accessor :title, :author
 
   @books = []
 
@@ -15,6 +15,10 @@ class Book
 
   def add_rental(person, date)
     Rental.new(date, self, person)
+  end
+
+  def rentals
+    @rentals
   end
 
   def self.all

@@ -21,7 +21,7 @@ class Listings
     students = Student.all
     teachers = Teacher.all
 
-    if students.empty? && teachers.empty?
+    if students.empty? #&& teachers.empty?
       puts 'There are no people added yet.'
     else
       puts 'These are all the people:'
