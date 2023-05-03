@@ -25,7 +25,6 @@ class Listings
     if persons.empty?
       puts 'There are no people added yet.'
     else
-      puts 'These are all the people:'
       persons.each do |person|
         puts "#{person.name}, #{person.class} aged #{person.age} with ID: #{person.id}."
       end
