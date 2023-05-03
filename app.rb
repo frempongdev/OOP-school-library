@@ -11,19 +11,21 @@ class App
   end
 
   def loading
-    if File.zero?('books.json')
+    if File.zero?('books.json') || !File.exist?('books.json')
     else
       book_reads = JSON.load(File.read('books.json')).map do |book_data|
       Book.new(book_data['title'], book_data['author'])
       end
     end
-    if File.zero?('student.json')
+    if File.zero?('student.json') || !File.exist?('student.json')
+      puts "No student available"
     else
-        student_reads = JSON.load(File.read('student.json')).map do |student_data|
-        Student.new(student_data['age'], student_data['parent_permission'], student_data['name'])
-        end
+      student_reads = JSON.load(File.read('student.json')).map do |student_data|
+      student = Student.new(student_data['age'], student_data['parent_permission'], student_data['name'])
+      student.make_student
+      end
     end
-    if File.zero?('teacher.json')
+    if File.zero?('teacher.json') || !File.exist?('teacher.json')
     else
       teacher_reads = JSON.load(File.read('teacher.json')).map do |teacher_data|
       Teacher.new(teacher_data['specialization'], teacher_data['age'], teacher_data['name'])
