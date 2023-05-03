@@ -1,6 +1,7 @@
 require './creation'
 require './listings'
 require './saves'
+require './converter'
 require 'json'
 
 class App
@@ -30,11 +31,10 @@ class App
     end
     if File.zero?('rentals.json')
     else
-    rental_reads = JSON.load(File.read('rentals.json')).map do |rental_data|
-      book = Book.new(rental_data['book']['title'], rental_data['book']['author'])
-      person = Person.new(rental_data['person']['age'], rental_data['person']['name'])
+      rental_reads = JSON.load(File.read('rentals.json')).map do |rental_data|
+      book = BookConverter.new(rental_data['book']['title'], rental_data['book']['author'])
+      person = PersonConverter.new(rental_data['person']['id'], rental_data['person']['age'], rental_data['person']['name'])
       Rental.new(rental_data['date'], book, person)
-      # puts person
       end  
     end
   end
