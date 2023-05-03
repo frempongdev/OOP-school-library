@@ -1,20 +1,20 @@
 class BookConverter
-    attr_accessor :title, :author, :rentals
-    def initialize(title, author)
-        @title = title
-        @author =author
-        @rentals = []
-    end
- end
+  attr_accessor :title, :author, :rentals
 
- class PersonConverter
-    attr_accessor :id, :age, :name, :rentals
+  def initialize(title, author)
+    @title = title
+    @author = author
+    @rentals = []
+  end
+end
 
-    
-    def initialize(id, age, name)
-        @id = id
-        @age = age
-        @name = name
-        @rentals = []
-    end
- end
+class PersonConverter
+  attr_accessor :id, :age, :name, :rentals
+
+  def initialize(id, age, name)
+    @id = id
+    @age = age
+    @name = name
+    @rentals = []
+  end
+end

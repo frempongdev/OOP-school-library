@@ -17,9 +17,7 @@ class Book
     Rental.new(date, self, person)
   end
 
-  def rentals
-    @rentals
-  end
+  attr_reader :rentals
 
   def self.all
     @books
