@@ -24,14 +24,14 @@ describe Person do
   context 'testing can_use_services method of person class' do
     it 'should return true if person can use services' do
       person1 = Person.new(33)
-      person2 = Person.new(14,"James")
-      student1 = Student.new(15,false,'Anthony')
-      student2 = Student.new(21,false,'Anthony')
+      person2 = Person.new(14, 'James')
+      student1 = Student.new(15, false, 'Anthony')
+      student2 = Student.new(21, false, 'Anthony')
 
       expect(person1.can_use_service?).to eq(true)
       expect(person2.can_use_service?).to eq(true)
       expect(student1.can_use_service?).to eq(false)
-      expect(person2.can_use_service?).to eq(true)
+      expect(student2.can_use_service?).to eq(true)
     end
   end
 
