@@ -1,4 +1,5 @@
 require_relative '../person'
+require_relative '../book'
 
 describe Person do
   context "testing initialize method of person class" do
@@ -24,6 +25,17 @@ describe Person do
       person = Person.new(33)
 
       expect(person.can_use_service?).to eq(true)
+    end
+  end
+
+  context "add rental method" do
+    it "should add a new rental" do
+      book = Book.new('Things fall apart','Chinua Achebe')
+      person = Person.new(33)
+      rental = person.add_rental(book,'2023')
+
+      expect(rental.book).to eq(book)
+      expect(rental.person.age).to eq(33)
     end
   end
 end
