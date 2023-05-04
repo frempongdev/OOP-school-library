@@ -20,16 +20,13 @@ class Listings
   def list_all_people
     students = Student.all
     teachers = Teacher.all
+    persons = students + teachers
 
-    if students.empty? && teachers.empty?
+    if persons.empty?
       puts 'There are no people added yet.'
     else
-      puts 'These are all the people:'
-      students.each do |student|
-        puts "#{student.name}, Student aged #{student.age} with ID: #{student.id}."
-      end
-      teachers.each do |teacher|
-        puts "#{teacher.name}, #{teacher.specialization} Teacher aged #{teacher.age} with ID: #{teacher.id}."
+      persons.each do |person|
+        puts "#{person.name}, #{person.class} aged #{person.age} with ID: #{person.id}."
       end
     end
     puts # blank
